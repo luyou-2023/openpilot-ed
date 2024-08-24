@@ -189,6 +189,7 @@ void can_send_thread(std::vector<Panda *> pandas, bool fake_send) {
     if ((nanos_since_boot() - event.getLogMonoTime() < 1e9) && !fake_send) {
       for (const auto& panda : pandas) {
         LOGT("sending sendcan to panda: %s", (panda->hw_serial()).c_str());
+        // boardd进程订阅该主题，并通过panda硬件和固件将 Cap'n Proto 消息转换为物理 CAN 消息。该方法写入硬件的微控制器，微控制器使用 CAN 收发器将 CAN 消息直接发送到车辆的 CAN 网络。sendcanpanda->can_send
         panda->can_send(event.getSendcan());
         LOGT("sendcan sent to panda: %s", (panda->hw_serial()).c_str());
       }
