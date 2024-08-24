@@ -8,7 +8,9 @@ from openpilot.selfdrive.car.honda.values import HondaFlags, HONDA_BOSCH, HONDA_
 # 2 = ACC-CAN - camera side
 # 3 = F-CAN A - OBDII port
 
-
+'''
+的任务selfdrive/car/<make>/carcontroller.py是将设定点转换为制造商特定的 CAN 消息。通常carcontroller使用附加库（例如）来创建自定义 CAN 消息selfdrive/car/honda/hondacan.py，该库使用库来创建制造商特定的 CAN 消息packer。
+'''
 class CanBus(CanBusBase):
   def __init__(self, CP=None, fingerprint=None) -> None:
     # use fingerprint if specified
