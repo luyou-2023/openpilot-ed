@@ -1,3 +1,19 @@
+环境（Environment）
+物理环境（Physical Environment）：包括道路条件和其他车辆等外部因素。
+用户干预（human intervention）：用户可以通过改变速度限制或手动接管车辆进行干预。
+汽车（Car）
+Comma Two设备：主要负责控制汽车的单元。
+CAN总线（Controller Area Network）：用于与汽车通信的特定格式的消息传递。
+Panda：硬件适配器，用于连接CAN到Comma Two。
+Comma Two传感器（Sensors）
+相机：监控前方道路。
+GPS：位置确定。
+红外线：检测驾驶员分心。
+软件组件（Software Components）
+基础设施（Infrastructure）：安装/更新脚本、APK（Android应用文件）、phonelibs（导入的Android库）。
+通信依赖项（Communication Dependencies）：ZMQ/msgg（发布订阅消息传递）、Cereal（内部消息和日志）、Cap'n Proto（消息类型）。
+自驾核心（Self-drive Core）：boardd（与Panda通过USB通信）、camerad（读取道路摄像头图像）、radard（处理雷达消息）、modeld（应用机器学习模型）、plannerd（决定车辆应去的方向）、controlsd（创建特定车型的驱动指令）、opendbc（编码CAN消息）。
+
 <div align="center" style="text-align: center;">
 
 <h1>openpilot</h1>
