@@ -19,10 +19,10 @@ GPS：位置确定。
 
 从这个描述中，我们可以得出核心系统功能的一个非常简单的抽象实现：
 
-while (true) {
-  read sensor data
-  compute adjustments using machine-learning model
-  apply adjustments to actuators
+while (true) { <br>
+  read sensor data <br>
+  compute adjustments using machine-learning model <br>
+  apply adjustments to actuators <br>
 }
 虽然这看起来过于简单，但本质上这就是 openpilot 内部的工作方式。实际上，openpilot 使用 300 多个 Python 文件（分为各种子模块、依赖项和多个硬件组件）来运行该系统。
 
