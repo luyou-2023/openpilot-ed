@@ -14,6 +14,20 @@ GPS：位置确定。
 通信依赖项（Communication Dependencies）：ZMQ/msgg（发布订阅消息传递）、Cereal（内部消息和日志）、Cap'n Proto（消息类型）。
 自驾核心（Self-drive Core）：boardd（与Panda通过USB通信）、camerad（读取道路摄像头图像）、radard（处理雷达消息）、modeld（应用机器学习模型）、plannerd（决定车辆应去的方向）、controlsd（创建特定车型的驱动指令）、opendbc（编码CAN消息）。
 
+
+想象一下，我们正在为自动驾驶汽车设计非常简单的软件。为了让它对环境（其他汽车、车道分离）做出反应，我们需要能够读取传感器数据、根据这些数据采取行动并更新执行器，例如方向盘或油门。
+
+从这个描述中，我们可以得出核心系统功能的一个非常简单的抽象实现：
+
+while (true) {
+  read sensor data
+  compute adjustments using machine-learning model
+  apply adjustments to actuators
+}
+虽然这看起来过于简单，但本质上这就是 openpilot 内部的工作方式。实际上，openpilot 使用 300 多个 Python 文件（分为各种子模块、依赖项和多个硬件组件）来运行该系统。
+
+这篇文章旨在概述从传感器输入到执行器输出的路径上的主要架构组件和流程、它们的职责、组件内或组件之间应用的设计模式以及在该架构中遇到的权衡。
+
 <div align="center" style="text-align: center;">
 
 <h1>openpilot</h1>
